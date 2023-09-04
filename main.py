@@ -18,8 +18,10 @@ class Coordinate:
         
     def print_coordinate(self):
         print(f'({self.x}, {self.y})', end = '')
-        if self.label is not None: print(f' : {self.label}')
-        else: print()
+        if self.label is not None: 
+            print(f' : {self.label}')
+        else: 
+            print()
 
 
 def get_file_path():
@@ -56,7 +58,9 @@ def collect_coordinates(img_file_name, coordinates, adjustment, get_label):
                          param = (coordinates, adjustment, get_label))
     while True:
         key = cv2.waitKey(0)
-        if key == ord('`'): cv2.destroyAllWindows(); break
+        if key == ord('`'): 
+            cv2.destroyAllWindows() 
+            break
 
 
 def click(event, x, y, flags, param):
@@ -87,10 +91,11 @@ except Exception as ex:
 else:
     adjustment = get_adjustment()
     coordinates = []
+    get_label = False
 
     print('Would you like to label each coordinate? (y/n):')
-    if input('> ') == 'y': get_label = True
-    else: get_label = False
+    if input('> ') == 'y': 
+        get_label = True
 
     collect_coordinates(img_file_name, coordinates, adjustment, get_label)
     os.remove(img_file_name)
